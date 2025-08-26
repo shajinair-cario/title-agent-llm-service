@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  db:
+    image: ankane/pgvector:latest   # or pgvector/pgvector:pg16
+    container_name: pgvector
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: secret
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "app"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  app:
+    image: title-nlp-service:0.0.1
+    container_name: title-nlp-service
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: local
+      # override DB connection so app uses the "db" service name instead of localhost
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/app
+      SPRING_DATASOURCE_USERNAME: app
+      SPRING_DATASOURCE_PASSWORD: secret
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pg_data:

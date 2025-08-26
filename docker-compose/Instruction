@@ -1,0 +1,7 @@
+docker compose -f app-compose.yml up -d
+
+psql -h localhost -p 5432 -U app -d app
+
+See the log of app
+docker logs -f title-nlp-service
+

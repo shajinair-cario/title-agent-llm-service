@@ -1,0 +1,97 @@
+# -------------------------
+# Java / Maven / Gradle
+# -------------------------
+target/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+.gradle/
+out/
+dependency-reduced-pom.xml
+
+# -------------------------
+# IDEs
+# -------------------------
+.idea/
+*.iml
+*.ipr
+*.iws
+*.class
+*.project
+*.classpath
+*.settings/
+.vscode/
+*.swp
+
+# -------------------------
+# Logs
+# -------------------------
+*.log
+logs/
+*.out
+*.err
+
+# -------------------------
+# Spring Boot specific
+# -------------------------
+# Exclude application secrets and overrides
+application-*.yml
+application-*.yaml
+application-*.properties
+
+# If you want to keep default application.yml, comment out above and list only secrets:
+# application-prod.yml
+# application-dev.yml
+
+# -------------------------
+# Docker
+# -------------------------
+*.pid
+.dockerignore
+docker-compose.override.yml
+docker-compose.local.yml
+
+# If you generate build artifacts inside docker/
+docker/data/
+docker/tmp/
+docker/logs/
+
+# -------------------------
+# OS / Misc
+# -------------------------
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+
+# -------------------------
+# Security
+# -------------------------
+# Don’t commit AWS/GCP keys or service account files
+*.pem
+*.key
+*.crt
+*.der
+*.p12
+*.jks
+*.secrets
+*.env
+*.credentials
+*.config
+
+# -------------------------
+# Node / Frontend (if bundled)
+# -------------------------
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+
+#-------------------------
+# credential files
+#-------------------------
+# Secrets / credentials
+aws-credentials
+resources/application-local.yml
+src/test/resources/application-local.yml
+git.txt
+*.env

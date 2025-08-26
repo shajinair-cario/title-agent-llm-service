@@ -1,0 +1,10 @@
+{
+  "fields": [
+    { "key": "issuing_dmv", "anchors": ["COMMONWEALTH OF PENNSYLVANIA", "DMV"] },
+    { "key": "vin", "anchors": ["VIN"] },
+    { "key": "title_number", "anchors": ["TITLE NUMBER"] },
+    { "key": "owner_name", "anchors": ["OWNER"] },
+    { "key": "owner_address", "anchors": ["ADDRESS"] },
+    { "key": "issuing_date", "anchors": ["ISSUE DATE"] }
+  ]
+}

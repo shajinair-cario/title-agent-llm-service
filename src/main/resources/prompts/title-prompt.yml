@@ -1,0 +1,23 @@
+system: |
+  You normalize extracted US vehicle title fields into strict JSON...
+  Rules:
+  - VIN: {{ruleVin}}
+  - Make/Model: {{ruleMakeModel}}
+  - Year: {{ruleYear}}
+  - Integers: {{ruleIntegers}}
+  - Address: {{ruleAddress}}
+  - Owner: {{ruleOwner}}
+  - Dates: {{ruleDates}}
+
+user: |
+  Extracted fields (JSON):
+  {{extractedFieldsJson}}
+
+rules:
+  ruleVin: "Uppercase A–Z0–9 only, length 17; else null."
+  ruleMakeModel: "Choose the most likely OEM values from text; null if uncertain."
+  ruleYear: "Integer 1900..2100; else null."
+  ruleIntegers: "cylinders/mileage must be integers; strip non-digits."
+  ruleAddress: "line1/city/STATE(2-letter)/ZIP(##### or #####-####); null if cannot parse."
+  ruleOwner: "If firm (INC/LLC/BANK/CORP/CORPORATION), set firmName and null first/last."
+  ruleDates: "yyyy-MM-dd or null."
